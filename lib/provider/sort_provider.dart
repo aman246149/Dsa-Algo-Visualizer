@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+enum Speed { fast, slow, verySlow, ultraSlow }
+
 class SortProvider extends ChangeNotifier {
   List<int> arr = [
     43,
@@ -51,6 +53,7 @@ class SortProvider extends ChangeNotifier {
   List<int> alreadySortedIndexes = [];
   Duration duration = const Duration(milliseconds: 10);
   bool isSortingCompleted = false;
+  Speed speed = Speed.fast;
 
   Future<void> bubbleSort() async {
     int size = arr.length;
@@ -101,7 +104,6 @@ class SortProvider extends ChangeNotifier {
           currentlySortedIndex =
               Indexes(firstIndex: j, secondIndex: minimumIndex);
           minimumIndex = j; // Update the index of the minimum element
-
 //this is for waiting i and j color
           await Future.delayed(
             duration,
@@ -209,6 +211,7 @@ class SortProvider extends ChangeNotifier {
     color = Colors.red;
     alreadySortedIndexes = [];
     isSortingCompleted = false;
+    notifyListeners();
   }
 
   void showColorIndex(int currentlyRenderIndex) {
@@ -220,6 +223,25 @@ class SortProvider extends ChangeNotifier {
         color = Colors.deepPurple;
       }
     }
+  }
+
+  void changeDuration(Speed selectedSpeed) {
+    speed = selectedSpeed;
+    switch (selectedSpeed) {
+      case Speed.fast:
+        duration = Duration(milliseconds: 10); // Set duration for Speed x1
+        break;
+      case Speed.slow:
+        duration = Duration(milliseconds: 100); // Set duration for Speed x2
+        break;
+      case Speed.verySlow:
+        duration = Duration(milliseconds: 500); // Set duration for Speed x2
+        break;
+      case Speed.ultraSlow:
+        duration = Duration(milliseconds: 1000); // Set duration for Speed x2
+        break;
+    }
+    notifyListeners();
   }
 }
 

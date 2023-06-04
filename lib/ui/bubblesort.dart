@@ -1,3 +1,5 @@
+import "dart:math";
+
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import 'package:visualizer/provider/sort_provider.dart';
@@ -28,20 +30,37 @@ class _BubbleSortState extends State<BubbleSort> {
             if (context.read<SortProvider>().currentlySortedIndex != null) {
               context.read<SortProvider>().showColorIndex(index);
             }
+            // double maxHeight = MediaQuery.of(context).size.height - 100;
+            // double minHeight = 120;
+            int element = context.read<SortProvider>().arr[index];
+            int len = element.toString().length;
+            double dynamicHeight = 0;
+            if (len == 1) {
+              dynamicHeight = element.toDouble() * 10;
+              if (element <= 9 && element >= 3) {
+                dynamicHeight = element.toDouble() * 5;
+              }
+            } else {
+              dynamicHeight = element.toDouble() * 5;
+            }
 
-            return CustomBox(
-              height: 100,
-              width: 25,
-              color: context.watch<SortProvider>().isSortingCompleted
-                  ? Colors.green
-                  : context
-                          .watch<SortProvider>()
-                          .alreadySortedIndexes
-                          .contains(index)
-                      ? Colors.green
-                      : context.watch<SortProvider>().color,
-              text: context.watch<SortProvider>().arr[index].toString(),
-            ).animate(effects: [ShakeEffect(), FadeEffect(), ShimmerEffect()]);
+            return Align(
+              alignment: Alignment.bottomCenter,
+              child: CustomBox(
+                height: dynamicHeight,
+                width: 25,
+                color: context.watch<SortProvider>().isSortingCompleted
+                    ? Colors.green
+                    : context
+                            .watch<SortProvider>()
+                            .alreadySortedIndexes
+                            .contains(index)
+                        ? Colors.green
+                        : context.watch<SortProvider>().color,
+                text: context.watch<SortProvider>().arr[index].toString(),
+              ).animate(
+                  effects: [ShakeEffect(), FadeEffect(), ShimmerEffect()]),
+            );
           },
         ),
       ),
