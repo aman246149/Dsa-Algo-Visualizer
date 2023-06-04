@@ -13,16 +13,18 @@ class CustomBox extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      color: color,
-      child: Center(
-          child: Text(
-        text,
-        style:
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      )),
+    return UnconstrainedBox(
+      child: Container(
+        height: height,
+        width: width,
+        color: color,
+        child: Center(
+            child: Text(
+          text,
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        )),
+      ),
     );
   }
 }
