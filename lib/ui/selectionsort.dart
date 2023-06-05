@@ -48,7 +48,7 @@ class _SelectionSortState extends State<SelectionSort> {
                             : context.watch<SortProvider>().color,
                     text: context.watch<SortProvider>().arr[index].toString(),
                   ).animate(
-                      effects: [ShakeEffect(), FadeEffect(), ShimmerEffect()]);
+                      effects: [const ShakeEffect(), const FadeEffect(), const ShimmerEffect()]);
                 },
               ),
             ),

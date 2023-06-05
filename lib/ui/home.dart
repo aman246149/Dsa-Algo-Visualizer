@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> algorithms = ["BubbleSort", "SelectionSort", "InserstionSort"];
-  List<Widget> pages = [BubbleSort(), SelectionSort(), InsertionSort()];
+  List<Widget> pages = [const BubbleSort(), const SelectionSort(), const InsertionSort()];
 
   PageController controller = PageController();
   void reset(Function() callAlgorithm) {
@@ -36,17 +36,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Alogo Visulizer"),
+        title: const Text("Alogo Visulizer"),
         actions: [
-          CommonRow(
+          const CommonRow(
             color: Colors.red,
             text: "UnSorted",
           ),
-          CommonRow(
+          const CommonRow(
             color: Colors.green,
             text: "Sorted",
           ),
-          CommonRow(
+          const CommonRow(
             color: Colors.purple,
             text: "Comparision",
           ),
@@ -65,15 +65,15 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text(context.watch<SortProvider>().speed.name),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           ElevatedButton(
               onPressed: () {
                 context.read<SortProvider>().reset();
               },
-              child: Text("Reset")),
-          SizedBox(
+              child: const Text("Reset")),
+          const SizedBox(
             width: 30,
           )
         ],
@@ -82,11 +82,11 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             flex: 1,
-            child: Container(
+            child: SizedBox(
               height: double.maxFinite,
               child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                separatorBuilder: (context, index) => SizedBox(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                separatorBuilder: (context, index) => const SizedBox(
                   height: 15,
                 ),
                 itemBuilder: (context, index) => ElevatedButton(
@@ -120,9 +120,9 @@ class _HomePageState extends State<HomePage> {
           Expanded(
               flex: 6,
               child: PageView(
-                physics: NeverScrollableScrollPhysics(),
-                children: pages,
+                physics: const NeverScrollableScrollPhysics(),
                 controller: controller,
+                children: pages,
               )),
         ],
       ),
@@ -146,14 +146,14 @@ class CommonRow extends StatelessWidget {
           radius: 8,
           backgroundColor: color,
         ),
-        SizedBox(
+        const SizedBox(
           width: 4,
         ),
         Text(
           text,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           width: 12,
         ),
       ],

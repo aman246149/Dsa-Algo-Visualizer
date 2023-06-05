@@ -1,4 +1,3 @@
-import "dart:math";
 
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
@@ -59,7 +58,7 @@ class _BubbleSortState extends State<BubbleSort> {
                         : context.watch<SortProvider>().color,
                 text: context.watch<SortProvider>().arr[index].toString(),
               ).animate(
-                  effects: [ShakeEffect(), FadeEffect(), ShimmerEffect()]),
+                  effects: [const ShakeEffect(), const FadeEffect(), const ShimmerEffect()]),
             );
           },
         ),

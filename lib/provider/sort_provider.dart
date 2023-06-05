@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -229,16 +228,16 @@ class SortProvider extends ChangeNotifier {
     speed = selectedSpeed;
     switch (selectedSpeed) {
       case Speed.fast:
-        duration = Duration(milliseconds: 10); // Set duration for Speed x1
+        duration = const Duration(milliseconds: 10); // Set duration for Speed x1
         break;
       case Speed.slow:
-        duration = Duration(milliseconds: 100); // Set duration for Speed x2
+        duration = const Duration(milliseconds: 100); // Set duration for Speed x2
         break;
       case Speed.verySlow:
-        duration = Duration(milliseconds: 500); // Set duration for Speed x2
+        duration = const Duration(milliseconds: 500); // Set duration for Speed x2
         break;
       case Speed.ultraSlow:
-        duration = Duration(milliseconds: 1000); // Set duration for Speed x2
+        duration = const Duration(milliseconds: 1000); // Set duration for Speed x2
         break;
     }
     notifyListeners();

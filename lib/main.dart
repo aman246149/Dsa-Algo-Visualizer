@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:visualizer/provider/sort_provider.dart';
-import 'package:visualizer/ui/bubblesort.dart';
 import 'package:visualizer/ui/home.dart';
-import 'package:visualizer/ui/insertion_sort.dart';
-import 'package:visualizer/ui/selectionsort.dart';
 
 void main() {
   runApp(const MyApp());
